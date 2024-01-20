@@ -9,8 +9,9 @@
     <center>
         <h1>REGISTRATIONS FORMS</h1>
 
-        <form method="POST">
-            {% csrf_token %}
+        <form method="POST" enctype="multipart/form-data">
+
+                {% csrf_token %}
 
                 {{ufo.as_p}}
                 {{pfo.as_p}}

@@ -8,6 +8,8 @@ from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
+from app.models import *
+from django.contrib.auth.decorators import login_required
 
 def registration(request):
     UFO=UserForm()
@@ -62,3 +64,8 @@ def user_login(request):
             return HttpResponse('Invalid Credentials')
 
     return render(request,'user_login.html')
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('home'))
